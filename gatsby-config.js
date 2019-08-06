@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `ERPexpert - Torne-se especialista em SAP na metade do tempo`,
+    description: `Torne-se especialista em SAP na metade do tempo.`,
+    author: `Aldo Monteiro`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -11,6 +11,42 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/content/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 590,
+            },
+          },
+          {
+            resolve: "gatsby-remark-copy-linked-files",
+            options: {
+              // `ignoreFileExtensions` defaults to [`png`, `jpg`, `jpeg`, `bmp`, `tiff`]
+              // as we assume you'll use gatsby-remark-images to handle
+              // images in markdown as it automatically creates responsive
+              // versions of images.
+              //
+              // If you'd like to not use gatsby-remark-images and just copy your
+              // original images to the public directory, set
+              // `ignoreFileExtensions` to an empty array.
+              ignoreFileExtensions: [],
+            },
+          },        ],
       },
     },
     `gatsby-transformer-sharp`,
